@@ -13,8 +13,6 @@ export const getCurrentProfile = () => async (dispatch) => {
       payload: res.data,
     });
   } catch (err) {
-    console.log("Hey i hit");
-
     dispatch({
       type: PROFILE_ERROR,
       payload: { msg: err.response.statusText, status: err.response.status },
@@ -49,7 +47,7 @@ export const createProfile =
       }
     } catch (err) {
       const errors = err.response.data.errors;
-      console.log(errors);
+
       if (errors) {
         errors.forEach((error) => dispatch(setAlert(error.msg, "danger")));
       }
